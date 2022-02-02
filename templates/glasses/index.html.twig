@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Glasses index{% endblock %}
+
+{% block body %}
+    <h1>Glasses index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brand</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+                <th>Shape</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for glass in glasses %}
+            <tr>
+                <td>{{ glass.id }}</td>
+                <td>{{ glass.brand }}</td>
+                <td>{{ glass.name }}</td>
+                <td>{{ glass.color }}</td>
+                <td>{{ glass.size }}</td>
+                <td>{{ glass.shape }}</td>
+                <td>{{ glass.price }}</td>
+                <td>
+                    <a href="{{ path('glasses_show', {'id': glass.id}) }}">show</a>
+                    <a href="{{ path('glasses_edit', {'id': glass.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('glasses_new') }}">Create new</a>
+{% endblock %}
