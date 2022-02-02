@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GlassesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GlassesRepository::class)]
@@ -30,6 +32,14 @@ class Glasses
 
     #[ORM\Column(type: 'integer')]
     private $price;
+
+    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'glasses')]
+    private $customer;
+
+    public function __construct()
+    {
+        $this->customer = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,30 @@ class Glasses
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|user[]
+     */
+    public function getCustomer(): Collection
+    {
+        return $this->customer;
+    }
+
+    public function addCustomer(user $customer): self
+    {
+        if (!$this->customer->contains($customer)) {
+            $this->customer[] = $customer;
+        }
+
+        return $this;
+    }
+
+    public function removeCustomer(user $customer): self
+    {
+        $this->customer->removeElement($customer);
 
         return $this;
     }
