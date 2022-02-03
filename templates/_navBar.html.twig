@@ -3,6 +3,18 @@
 	<ul class="nav">
 		<li><a class="navbar-a"href="{{ path("home") }}">Optique</a></li>
 		<li><a class="navbar-a"href="#">Solaire</a></li>
-		<li><a class="navbar-a"href="#">Profil</a></li>
+		<li><a class="navbar-a"href="{{ path("user_index") }}">Profil</a></li>
+		{% if app.user %}
+
+    {{ app.user.email }}
+
+    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+
+{% else %}
+
+    <a href="{{ path('login') }}"> Se connecter</a>
+
+{% endif %}
+
 	</ul>
 </nav>
