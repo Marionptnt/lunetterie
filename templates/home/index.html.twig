@@ -3,5 +3,55 @@
 {% block title %}La Lunetterie Rémoise{% endblock %}
 
 {% block body %}
+<header>
+    <h1>La Lunetterie Rémoise</h1>
+    <h2 class="header-h2">Je shop chez mon opticien local !</h2>
+</header>
+
+<div class="pitch">
+    <p>Faites votre sélection de montures</p>
+    <p>Demandez votre devis</p>
+    <p>Rendez - vous en magasin pour l'essayage</p>
+</div>
+
+<div class="home-show">
+    <h3>Découvrez nos modèles Hommes & Femmes</h3>
+    <svg width=70px aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-down"
+        class="svg-inline--fa fa-chevron-circle-down fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512">
+        <path fill="currentColor"
+            d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM273 369.9l135.5-135.5c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L256 285.1 154.4 183.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L239 369.9c9.4 9.4 24.6 9.4 34 0z">
+        </path>
+    </svg>
+</div>
+<div class="home">
+    {% for glass in glasses %}
+		<figure class="glasses-card">
+			{% if glass.image %}
+				<img class="image-glasses" src="{{  glass.image }}" alt="Photo de la monture"/>
+            {% else %}
+                <img class="image-glasses" src="{{ asset('build/images/4.jpg') }}">
+		    {% endif %}
+			<figcaption class="glasses-description">
+				<div class="brand-glasses">{{ glass.brand|upper }}</div>
+				<div class="glasses-namecard-content-up">{{ glass.name|capitalize }}
+				</div>
+				<div class="card-border card-content-up cardcontent">
+					<div class="glasses-color card-content-up">couleur : {{ glass.color }}
+					</div>
+					<div class="shape card-content-up">forme : {{ glass.shape }}
+					</div>
+					<div class="glasses-size"> taille : {{ glass.size}}</div>
+					<div class="glasses-price">{{ glass.price }}€
+					</div>
+				</div>
+				<a class="show-glasses" id="buttonCardShow" href="{{ path("glasses_show", {id: glass.id}) }}">Voir le modèle</a>
+			</figcaption>
+		</figure>
+	{% endfor %}
+</div>
+
+
+
 
 {% endblock %}

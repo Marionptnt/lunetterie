@@ -33,8 +33,11 @@ class Glasses
     #[ORM\Column(type: 'integer')]
     private $price;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'glasses')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'glasses')]
     private $customer;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
 
     public function __construct()
     {
@@ -138,6 +141,18 @@ class Glasses
     public function removeCustomer(user $customer): self
     {
         $this->customer->removeElement($customer);
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

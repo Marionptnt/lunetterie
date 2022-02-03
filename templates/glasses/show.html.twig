@@ -3,44 +3,26 @@
 {% block title %}Glasses{% endblock %}
 
 {% block body %}
-    <h1>Glasses</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ glass.id }}</td>
-            </tr>
-            <tr>
-                <th>Brand</th>
-                <td>{{ glass.brand }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ glass.name }}</td>
-            </tr>
-            <tr>
-                <th>Color</th>
-                <td>{{ glass.color }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ glass.size }}</td>
-            </tr>
-            <tr>
-                <th>Shape</th>
-                <td>{{ glass.shape }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ glass.price }}</td>
-            </tr>
-        </tbody>
-    </table>
+<figure class="glasses-card">
+    <img class="image-glasses" src="{{  glass.image }}" alt="Photo de la monture"/>
+    <figcaption class="glasses-description">
+        <div class="brand-glasses">{{ glass.brand|upper }}</div>
+        <div class="glasses-namecard-content-up">{{ glass.name|capitalize }}
+        </div>
+        <div class="card-border card-content-up cardcontent">
+            <div class="glasses-color card-content-up">couleur : {{ glass.color }}
+            </div>
+            <div class="shape card-content-up">forme : {{ glass.shape }}
+            </div>
+            <div class="glasses-size"> taille : {{ glass.size}}</div>
+            <div class="glasses-price">{{ glass.price }}€
+            </div>
+        </div>
+    </figcaption>
+</figure>
 
-    <a href="{{ path('glasses_index') }}">back to list</a>
+    <a href="{{ path('home') }}">Retour</a>
 
-    <a href="{{ path('glasses_edit', {'id': glass.id}) }}">edit</a>
 
-    {{ include('glasses/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,3 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Poppins:wght@300&display=swap');
+
+:root {
+--color-green: #6B705C;
+--color-champagne: #FFE8D6;
+--background-glasses: #FFFF;
+--main-font: 'Poppins', sans-serif;
+--brand-title: 'Major Mono Display', monospace;
+}
+
 body {
-    background-color: lightgray;
+    color: var(--color-green);
+    font-size: 18px;
+    font-family: var(--main-font);
+    margin: 0;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-champagne);
+}
+
+li{
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.navbar{
+    background-color: var(--color-green);
+    font-size: 2rem;
+    padding: 2rem 0rem 1rem;
+    width: 100%;
+}
+
+.logo{
+    text-align: start;
+    width: 150px;
+    text-shadow:1px 1px 2px black;
+    margin: 10px ;
+    padding: 1rem;
+    font-family: var(--brand-title);
+    color: var(--color-champagne);
+}
+.nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* HOME PAGE */
+
+header{
+    align-items: stretch;
+    background-image: url('/assets/images/header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--color-champagne);
+   
+    font-family: var(--brand-title);
+    font-size: 2rem;
+    justify-content: center;
+    margin: 0;
+    padding: 4rem 2rem;
+   
+}
+
+h1{
+    margin: 5rem 0 2rem;
+    text-shadow:1px 1px 2px black;
+    font-family: var(--brand-title);
+
+}
+
+.header-h2{
+    font-family: var(--main-font);
+    font-size: 2rem;
+    padding: 4rem;
+}
+
+.pitch{
+    color: var(--color-green);
+   font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem;
+}
+
+.home{
+    background-color: var(--color-champagne);
+    padding: 2rem;
+    font-size: 1.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* GLASSES SECTION */
+
+.home-show{
+    padding: 2rem 1.5rem;
+    background-color: var(--color-champagne);
+}
+
+.brand-glasses{
+    padding: 10px;
+    border-top: 1px solid var(--color-champagne)
+}
+
+.glasses-description{
+padding: 1rem;
+font-size: 1rem;
+}
+.glasses-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FFFF;
+    border: solid 0.2rem var(--color-champagne);
+    box-shadow: inset 0px 10px 16px -4px rgba(0,0,0,0.1);
+    border-radius: 3rem;
+    width: 330px;
+    margin: 1rem;
+}
+
+.image-glasses{
+    padding: 1rem 0;
+    width: 90%;
+    margin: auto;
+    border-radius: 2rem;
+}
+
+.card-border{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: flex-start;
+    align-items: center;
+    margin: 1rem auto 2rem;
+    text-align: left;
+}
+
+.glasses-price{
+    font-weight: bolder;
+    font-style: italic;
+    font-family: var(--brand-title);
+}
+
+.show-glasses{
+    background-color: var(--color-green);
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0px 1px 3px --color-champagne;
+    color: #FFFF;
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 680px) {
+
+    /* .navbar{
+        display: flex;
+        font-size: 2rem;
+        position: initial;
+        width: auto;
+        padding: 1rem;
+        font-size: medium;
+        justify-content: space-between;
+        align-items: center;
+    }  */
+
 }
