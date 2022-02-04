@@ -43,9 +43,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Glasses::class, mappedBy: 'customer')]
     private $glasses;
 
+    #[ORM\ManyToMany(targetEntity: Glasses::class, inversedBy: 'users')]
+    private $wearList;
+
     public function __construct()
     {
         $this->glasses = new ArrayCollection();
+        $this->wearList = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,5 +183,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Glasses[]
+     */
+    public function getWearList(): Collection
+    {
+        return $this->wearList;
+    }
+
+    public function addWearList(Glasses $wearList): self
+    {
+        if (!$this->wearList->contains($wearList)) {
+            $this->wearList[] = $wearList;
+        }
+
+        return $this;
+    }
+
+    public function removeWearList(Glasses $wearList): self
+    {
+        $this->wearList->removeElement($wearList);
+
+        return $this;
+    }
+
+    public function isInWearlist(Glasses $glass): bool
+    {
+        if ($this->wearList->contains($glass)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

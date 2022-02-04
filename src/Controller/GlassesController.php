@@ -79,13 +79,13 @@ class GlassesController extends AbstractController
         return $this->redirectToRoute('glasses_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}/wearList', name: 'wearList', methods: ['GET', 'POST'])]
+    #[Route('/{id}/wearList', name: 'glasses_wearlist', methods: ['GET', 'POST'])]
     public function addToWearlist(Request $request, Glasses $glass, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getWearlist()->contains($glass)) {
-            $this->getUser()->removeFromWearlist($glass);
+            $this->getUser()->removeWearlist($glass);
         } else {
-            $this->getUser()->addToWearlist($glass);
+            $this->getUser()->addWearlist($glass);
         }
         $entityManager->flush();
         
