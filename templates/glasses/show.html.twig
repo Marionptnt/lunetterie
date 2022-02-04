@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Glasses{% endblock %}
+{% block title %}La monture{% endblock %}
 
 {% block body %}
 
@@ -17,6 +17,13 @@
             </div>
             <div class="glasses-size"> taille : {{ glass.size}}</div>
             <div class="glasses-price">{{ glass.price }}€
+
+            {% if is_granted("ROLE_USER") %}
+            <a id="wearlist" href="{{ path('glasses_wearlist', {id: glass.id})}}">
+                 <i class="bi {{ app.user.isInWearlist(glass) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+            </a>
+
+         {% endif %}
             </div>
         </div>
     </figcaption>
