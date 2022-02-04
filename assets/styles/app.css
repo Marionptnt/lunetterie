@@ -164,6 +164,22 @@ font-size: 1rem;
     text-decoration: none;
 }
 
+.css-input {
+    padding: 4px;
+    font-size: 17px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+.css-input:focus {
+    outline:none;
+}
+
 @media screen and (min-width: 680px) {
 
     /* .navbar{
